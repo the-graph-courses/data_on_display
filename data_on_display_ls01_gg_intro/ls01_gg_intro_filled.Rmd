@@ -21,7 +21,7 @@ Hi GRAPH Courses student!
   
 This is the document that generates the lesson HTML/PDF handouts on our website. 
 
-You can follow the lesson by reading through this document, and you can also answer the included practice questions here. 
+You can read through it to follow the lesson by reading through this document, and you can answer the included practice questions. 
 
 If you prefer to CODE ALONG with the lesson video, please use the the "*_video_code_along" Rmd instead!
 ```
@@ -36,7 +36,7 @@ pacman::p_load(tidyverse,
                here)
 
 # Source lesson functions 
-source(here("global/functions/misc_functions.R"))
+source(here("global/functions/lesson_functions.R"))
 
 # Source autograder script 
 source(here("autograder/ls01_gg_intro_autograder.R"))
@@ -107,7 +107,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"))
 
 Take a moment to browse through the data:
 
-```{r render = reactable_10_rows}
+```{r render = .reactable_10_rows}
 # Print Niger measles (nigerm) data frame
 nigerm
 ```
@@ -186,7 +186,7 @@ For easier plotting in this lesson, we will use a smaller subsets of the `nigerm
 
 First let's create one called `nigerm96`, which only contains measles case data for the year 1996. Running the code below will create `nigerm96` and add it to your RStudio Environment:
 
-```{r, render = reactable_5_rows}
+```{r, render = .reactable_5_rows}
 # Create nigerm96 data frame
 nigerm96 <- nigerm %>%   
   filter(year == 1996)  %>% # filter to only include rows from 1996
@@ -198,7 +198,7 @@ The `select()` and `filter()` functions are part of the {dplyr} package for data
 :::
 
 Let's look at our new dataframe, `nigerm96`:
-```{r, render = reactable_5_rows}
+```{r, render = .reactable_5_rows}
 # Print nigerm96
 nigerm96
 ```
@@ -272,7 +272,7 @@ The `aes`thetic function is nested inside the `ggplot()` function, so be sure to
 
 It's your turn to practice plotting with `ggplot()`! For practice exercises in this lesson, you will be using a different subset of `nigerm` called **`nigerm04`**, which contains only data from the year 2004:
 
-```{r echo=FALSE, render = reactable_5_rows}
+```{r echo=FALSE, render = .reactable_5_rows}
 # Create nigerm04 data frame
 nigerm04 <- nigerm %>%
   filter(year == 2004)  %>% 
@@ -631,7 +631,7 @@ ggplot(data = DF_NAME,
 
 ## Contributors {.unlisted .unnumbered}
 
-The following team members contributed to this lesson: `r tgc_contributors_list(ids = c("joy"))`
+The following team members contributed to this lesson: `r .tgc_contributors_list(ids = c("joy"))`
 
 ## References {.unlisted .unnumbered}
 
@@ -659,4 +659,4 @@ Some material in this lesson was adapted from the following sources:
 
 -   Prabhakaran, Selva. 2016. "How to Make Any Plot in Ggplot2? \| Ggplot2 Tutorial." 2016. <http://r-statistics.co/ggplot2-Tutorial-With-R.html>.
 
-    `r tgc_license()`
+    `r .tgc_license()`
