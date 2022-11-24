@@ -20,9 +20,9 @@ editor_options:
 ```{HTML, include = F}
 Hi GRAPH Courses student! 
   
-This is a CODE ALONG document that you can type code into as you follow the lesson video. 
+This is a CODE ALONG document where you can type code as you follow the lesson video. 
 
-This is to encourage you to type along with the teacher; the best way to learn. 
+We encourage you to do this; typing code with the teacher is the best way to learn the right syntax. 
 
 If you prefer to work with the completed document, please use the the "*_filled" Rmd instead!
 ```

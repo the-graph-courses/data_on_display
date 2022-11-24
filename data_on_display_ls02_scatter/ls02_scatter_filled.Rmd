@@ -21,9 +21,9 @@ Hi GRAPH Courses student!
   
 This is the document that generates the lesson HTML/PDF handouts on our website. 
 
-You can read through it to follow the lesson, and answer the practice questions. 
+You can follow the lesson by reading through this document, and you can also answer the included practice questions here. 
 
-If you want to CODE ALONG with the lesson video, please use the the "*_video_code_along" Rmd instead!
+If you prefer to CODE ALONG with the lesson video, please use the the "*_video_code_along" Rmd instead!
 ```
 
 
