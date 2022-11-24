@@ -142,7 +142,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         if (isTRUE(!(.q1_test1))) 
           return(c(value = 0, message = "! Check that you are plotting the correct data."))
         if (isTRUE(!(.q1_test2))) 
-          return(c(value = 0, message = "! Make sure you're using geometric function geom_point()."))
+          return(c(value = 0, message = "! Make sure you're using geometric function `geom_point()`."))
         if (isTRUE(!(.q1_test3 && .q1_test4))) 
           return(c(value = 0, message = "! Check your mapping arguments for x and y: are you putting the right variables?"))
         if (isTRUE(.q1_test1 && .q1_test2 && .q1_test3 && .q1_test4)) 
@@ -211,8 +211,8 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         # check the y mapping
         .q2_test4 <- "* `y` -> `cases`" %in% capture.output(nigerm04_bar$mapping)
         
-        if (isTRUE(!(.q2_test1))) return(c(value = 0, message = "! Check which dataset you are plotting."))
-        if (isTRUE(!(.q2_test2))) return(c(value = 0, message = "! Do not forget to use ggplot2 geometry function geom_point."))
+        if (isTRUE(!(.q2_test1))) return(c(value = 0, message = "! Check that you are plotting the correct dataframe."))
+        if (isTRUE(!(.q2_test2))) return(c(value = 0, message = "! Do not forget to use ggplot2 geometry function `geom_col()`."))
         
         
         # KENE EDIT:
@@ -293,7 +293,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         .q3_test5 <- any(stringr::str_detect(capture.output(nigerm04_line$layers), 
                                              "colour = ~region"))
         
-        if (isTRUE(!(.q3_test1))) return(c(value = 0, message = "! Check which dataset you are plotting."))
+        if (isTRUE(!(.q3_test1))) return(c(value = 0, message = "! Check that you are plotting the correct data."))
         
         # KENE EDIT:
         if (ggplot_digest(.q3_correct) == ggplot_digest(nigerm04_line)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
