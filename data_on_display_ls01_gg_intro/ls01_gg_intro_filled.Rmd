@@ -16,7 +16,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{HTML, include = F}
+```{r, eval = F, include = F}
 Hi GRAPH Courses student! 
   
 This is the document that generates the lesson HTML/PDF handouts on our website. 
