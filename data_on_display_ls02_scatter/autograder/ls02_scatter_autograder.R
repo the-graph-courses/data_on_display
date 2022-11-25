@@ -25,7 +25,7 @@ pacman::p_load(tidyverse,
 ## Load data ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.malidd <- read.csv(here::here("data/clean/malidd.csv"))
+.malidd <- read_csv(here::here("data/clean/malidd.csv"))
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## age_height ----
