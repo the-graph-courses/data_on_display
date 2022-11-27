@@ -53,7 +53,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -108,7 +108,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -165,7 +165,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -215,7 +215,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -275,7 +275,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -336,7 +336,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
         
     
     }
@@ -403,7 +403,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
         
         
       }
