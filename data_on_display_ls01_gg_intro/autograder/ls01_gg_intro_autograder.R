@@ -7,23 +7,6 @@
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if(!require(pacman)) install.packages("pacman")
-pacman::p_load_gh('graph-courses/autograder')
-pacman::p_load(tidyverse,
-               praise,
-               digest,
-               here)
-# Custom ggplot digest function
-## Joy Vaz
-## 2022-11-17
-
-#' Function to generate hash function digests of ggplot objects.
-#' Intended for use in data viz data quizzes.
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Packages ----
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-if(!require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse,
                OpenImageR,
                here,
@@ -32,6 +15,13 @@ pacman::p_load(tidyverse,
                #magick,
                #imager,
                svglite)
+
+
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse,
+               digest,
+               here)
+
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## ggplot_digest function ----
@@ -42,15 +32,6 @@ pacman::p_load(tidyverse,
 
 #' Function to generate hash function digests of ggplot objects.
 #' Intended for use in data viz data quizzes. 
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Packages ----
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-if(!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse,
-               digest,
-               here)
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## ggplot_digest function ----
@@ -64,12 +45,6 @@ ggplot_digest <- function(myplot) {
   file.remove(plotfile)
   return(plot_crypt)
 }
-
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Init ----
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.scores <- rep(-1, times = 4)   # Put total number of questions as `times` argument
 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,6 +72,13 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
   filter(year == 2004)  %>% 
   # remove the year column
   select(-year)
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Init ----
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.scores <- rep(-1, times = 4)   # Put total number of questions as `times` argument
+
+
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## q1: nigerm04_scatter ----

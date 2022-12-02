@@ -17,7 +17,7 @@ editor_options:
 ---
 
 
-```{HTML, include = F}
+```{r, eval = F, include = F}
 Hi GRAPH Courses student! 
   
 This is a CODE ALONG document where you can type code as you follow the lesson video. 
