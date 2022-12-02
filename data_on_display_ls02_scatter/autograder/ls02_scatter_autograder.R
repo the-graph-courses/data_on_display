@@ -11,7 +11,13 @@ pacman::p_load_gh('graph-courses/autograder')
 pacman::p_load_gh("KO112/KO")
 pacman::p_load(tidyverse,
                praise,
+<<<<<<< HEAD
                here)
+=======
+               here,
+               dplyr,
+               KO)
+>>>>>>> c5f2b564af94f8737491dabcd81d5fcfdbeae197
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Init ----
@@ -52,7 +58,11 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
+<<<<<<< HEAD
         if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+=======
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
+>>>>>>> c5f2b564af94f8737491dabcd81d5fcfdbeae197
       }
     .apply_autograder()
   }
@@ -107,7 +117,11 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
+<<<<<<< HEAD
         if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+=======
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
+>>>>>>> c5f2b564af94f8737491dabcd81d5fcfdbeae197
       }
     .apply_autograder()
   }
@@ -164,7 +178,11 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
+<<<<<<< HEAD
         if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+=======
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
+>>>>>>> c5f2b564af94f8737491dabcd81d5fcfdbeae197
       }
     .apply_autograder()
   }
@@ -214,7 +232,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -274,7 +292,7 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
       }
     .apply_autograder()
   }
@@ -335,8 +353,8 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
-        
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
+
     
     }
     .apply_autograder()
@@ -402,8 +420,8 @@ pacman::p_load(tidyverse,
         perfect_match <- suppressWarnings(compare_ggplots(gg_req, gg_ans))
         
         if(isTRUE(perfect_match)) return(c(value = 1, message = paste("Correct!", praise::praise()) ))
-        if(!isTRUE(perfect_match)) return(c(value = 0, message = paste("Correct!", praise::praise()) ))
-        
+        if(!isTRUE(perfect_match)) return(c(value = 0, message = "Wrong. Please check the hint and try again."))
+
         
       }
     .apply_autograder()
