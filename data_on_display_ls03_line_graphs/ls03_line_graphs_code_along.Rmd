@@ -725,8 +725,7 @@ ggplot(data = gap_mini2,
                      y = gdpPercap, 
                      color = country)) +
   geom_line(size = 1) +
-  geom_point(mapping = aes(size = pop),
-                           alpha = 0.5) +
+  geom_point(size = 2.5) +
   geom_point() +
   scale_x_continuous(breaks = gap_years) +
   scale_y_log10()  +
