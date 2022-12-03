@@ -16,6 +16,18 @@ editor_options:
   chunk_output_type: inline
 ---
 
+
+```{r, eval = F, include = F}
+Hi GRAPH Courses student! 
+  
+This is the document that matches the lesson HTML notes on our website. 
+
+You can follow the lesson by reading through this document, and you can also answer the included practice questions here. 
+
+If you prefer to CODE ALONG with the lesson video, please use the the "*_video_code_along" Rmd instead!
+```
+
+
 ```{r, include = FALSE, warning = FALSE, message = FALSE}
 # Load packages 
 if(!require(pacman)) install.packages("pacman")

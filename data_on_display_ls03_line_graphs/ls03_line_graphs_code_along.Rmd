@@ -16,6 +16,16 @@ editor_options:
   chunk_output_type: inline
 ---
 
+```{r, eval = F, include = F}
+Hi GRAPH Courses student! 
+  
+This is a CODE ALONG document where you can type code as you follow the lesson video. 
+
+We encourage you to do this; typing code with the teacher is the best way to learn the right syntax. 
+
+If you prefer to work with the completed document, please use the the "*_filled" Rmd instead!
+```
+
 ```{r, include = FALSE, warning = FALSE, message = FALSE}
 # Load packages 
 if(!require(pacman)) install.packages("pacman")
