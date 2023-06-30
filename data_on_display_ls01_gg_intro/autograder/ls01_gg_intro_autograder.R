@@ -12,8 +12,6 @@ pacman::p_load(tidyverse,
                here,
                png,
                jpeg,
-               #magick,
-               #imager,
                svglite)
 
 
