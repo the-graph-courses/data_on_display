@@ -94,10 +94,8 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
       ggplot(gap_US, 
              mapping = aes(x = year, 
                            y = gdpPercap)) +
-      geom_line(size = 1.5, 
-                color = "grey") +
-      geom_point(size = 3, 
-                 color = "forestgreen") 
+      geom_line(lty = "dotdash") +
+      geom_point(color = "aquamarine") 
     
     gg_req <- .q2_correct
     gg_ans <- q2
@@ -119,7 +117,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
 # create one hint per question
 .HINT_q2 <- function(){
   'We want to plot a line and points: you need to use two different geometry functions.
-  Then we want to customize the color and size as fixed aesthetics inside each geom layer.' -> out
+  Then we want to make the line dot-dashed and points "aquamarine" by adding fixed aesthetics inside each geom layer.' -> out
   cat(out)
 }
 # solution of question
@@ -127,10 +125,8 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
   'ggplot(gap_US, 
           mapping = aes(x = year, 
                            y = gdpPercap)) +
-      geom_line(size = 1.5, 
-                color = "grey") +
-      geom_point(size = 3, 
-                 color = "forestgreen")' -> out
+      geom_line(lty = "dotdash") +
+      geom_point(color = "aquamarine")' -> out
   cat(out)
 }
 
