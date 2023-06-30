@@ -62,7 +62,7 @@ pacman::p_load(tidyverse,
 .HINT_age_height <- function(){
   'You can examine the code from the last example to help you with this question.
   The required inputs for a correct answer are:
-  (1) data argument - Did you accentally use nigerm96 instead of nigerm04?
+  (1) data argument - Did you spell the data frame name correctly?
   (2) x and y mappings - Check that you are mapping the correct in aes().
   (3) geom function -  Think about geometric shape you need for a scatter plot.
   Lastly, look for typos, unlosed brackets, missing commas, missing plus signs, and closely read any error messages.'  -> out
@@ -117,10 +117,10 @@ pacman::p_load(tidyverse,
 .HINT_age_height_respi <- function(){
   'HINT: Examine the code from and earlier example where where we mapped height to color, and do the same with frequency of respiration.
   The required inputs for a correct answer are:
-  (1) data argument - Did you accentally use nigerm96 instead of nigerm04?
+  (1) data argument - Did you spell the data frame name correctly?
   (2) x and y mappings - Check that you are mapping the right variables to x and y inside aes().
   (3) color mapping -  Check that you are mapping the right variable to color inside aes().
-  (3) geom function -  Think about geometric shapes you need for a scatter plot.
+  (4) geom function -  Think about geometric shapes you need for a scatter plot.
   Lastly, look for typos, unlosed brackets, missing commas, missing plus signs, and closely read any error messages.'  -> out
   cat(out)
 }
@@ -173,7 +173,7 @@ pacman::p_load(tidyverse,
 # create one hint per question
 .HINT_age_viral_respi <- function(){'HINT: Examine the code for the plot where where we mapped height to color, and do the same with frequency of respiration.
   The required inputs for a correct answer are:
-  (1) data argument - Did you accentally use nigerm96 instead of nigerm04?
+  (1) data argument - Did you spell the data frame name correctly?
   (2) x and y mappings - Check that you are mapping the right variables to x and y inside aes().
   (3) color mapping -  Check that you are mapping the color inside aes() to the right variable.
   (4) geom function -  Think about geometric shapes you need for a scatter plot.
@@ -225,7 +225,7 @@ pacman::p_load(tidyverse,
 .HINT_age_height_fever <- function(){
   'HINT: Examine the code for the plot where where we mapped breastfeeding to color, and do the same with fever instead.
   The required inputs for a correct answer are:
-  (1) data argument - Use the nigerm04 dataframe. 
+  (1) data argument - Did you spell the data frame name correctly? 
   (2) x and y mappings - Check that you are mapping the correct variables to x and y inside aes().
   (3) color mapping -  Check that you are mapping the color inside aes() to the right variable. Keep in mind that ggplot will treat the binay variable `fever` as a continuous variable, but here we want you to give it two distinct colors.
   (4) geom function -  Think about geometric shapes you need for a scatter plot.
@@ -283,7 +283,7 @@ pacman::p_load(tidyverse,
 # create one hint per question
 .HINT_age_viral_blue <- function(){
   'The required inputs for a correct answer are:
-  (1) data argument - Use the nigerm04 dataframe. 
+  (1) data argument - Did you spell the data frame name correctly?
   (2) x and y mappings - Check that you are mapping the correct variables to x and y inside aes().
   (3) geom function -  Think about geometric shapes you need for a scatter plot.
   (4) fixed color aesthetic -  Check that you are setting the color to a fixed value OUTSIDE aes(). Keep in mind that the color name should be in quotes.
