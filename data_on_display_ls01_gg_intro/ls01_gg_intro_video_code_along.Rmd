@@ -38,6 +38,7 @@ pacman::p_load(tidyverse,
                knitr, 
                here)
 
+
 # Source lesson functions 
 source(here("global/functions/lesson_functions.R"))
 
