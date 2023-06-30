@@ -7,18 +7,21 @@
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if(!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse,
-               OpenImageR,
-               here,
-               png,
-               jpeg,
-               svglite)
+pacman::p_load_gh('graph-courses/autograder')
+pacman::p_load_gh("KO112/KO")
 
+#pacman::p_load(tidyverse,
+#               OpenImageR,
+#               here,
+#               png,
+#               jpeg,
+#               svglite)
+#
 
-if(!require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse,
                digest,
-               here)
+               here,
+               praise)
 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,7 +106,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         
         # test 1
         # that data used is correct
-        .q1_test1 <- all_equal(
+        .q1_test1 <- all.equal(
           target = as_tibble(nigerm04_scatter$data), 
           current = as_tibble(.q1_correct$data))
         
@@ -175,7 +178,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         
         # test 1
         # that data used is correct
-        .q2_test1 <- all_equal(
+        .q2_test1 <- all.equal(
           target = as_tibble(nigerm04_bar$data), 
           current = as_tibble(.q2_correct$data))
         
@@ -252,7 +255,7 @@ load(here("data/clean/nigerm_cases_rgn.RData"),
         
         # test 1
         # that data used is correct
-        .q3_test1 <- all_equal(
+        .q3_test1 <- all.equal(
           target = as_tibble(nigerm04_line$data), 
           current = as_tibble(.q3_correct$data))
         
