@@ -322,7 +322,7 @@ pacman::p_load(tidyverse,
       geom_point(color = "steelblue",
                  size = 2.5,
                  alpha = 0.8) +
-      geom_smooth(method = "lm")
+      geom_smooth(method = "lm", color = "indianred3")
     
     gg_req <- .q5_correct
     gg_ans <- age_height_2
@@ -364,7 +364,7 @@ pacman::p_load(tidyverse,
       geom_point(color = "steelblue",
                  size = 2.5,
                  alpha = 0.8) +
-      geom_smooth(method = "lm")' -> out
+      geom_smooth(method = "lm", color = "indianred3")' -> out
   cat(out)
 }
 
