@@ -65,15 +65,18 @@ pacman::p_load()
 
 ## The `gapminder` data frame
 
-In February 2006, a Swedish physician and data advocate named Hans Rosling gave a famous TED talk titled ["The best stats you've ever seen"](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen) where he presented global economic, health, and development data complied by the Gapminder Foundation.
+In February 2006, a Swedish physician and global health professor named Hans Rosling gave a famous TED talk titled ["The best stats you've ever seen"](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen).
+
+He presented global economic, health, and development data complied by the Gapminder Foundation.
+
 
 [![Interactive data visualization tools with up-to-date data are available on the Gapminder\'s website.](images/paste-6726AD73.png)](https://www.gapminder.org/tools/)
 
-We can access a clean subset of this data with the R package {**gapminder**}, which we just loaded.
+We can access a clean subset of this data with the **{gapminder}** R package.
 
 ```{r render = reactable_10_rows, message = FALSE}
 # Load gapminder data frame from the gapminder package
-data(gapminder, package="gapminder")
+data()
 
 # Print dataframe
 gapminder
@@ -97,23 +100,30 @@ The `str()` function can tell us more about these variables.
 
 ```{r}
 # Data structure
-str(gapminder)
+
 ```
 
-This version of the **`gapminder`** dataset contains information for **142 countries**, divided in to **5 continents**.
+**`gapminder`** records data for **142 countries**, divided in to **5 continents**.
 
 ![](images/gap_map.png)
 
 ```{r}
 # Data summary
-summary(gapminder)
+
 ```
 
 Data are recorded every 5 years from 1952 to 2007 (a total of 12 years).
 
-Let's say we want to visualize the relationship between time (`year`) and life expectancy (`lifeExp`).
 
-For now let's just focus on one country - United States. First, we need to create a new data frame with only the data from this country.
+## Line graphs via `geom_line()`
+
+Line graphs show **relationships** between two **numerical variables**.
+
+Line graphs that have some notion of time on the x-axis are also called **time series plots**.
+
+Let's say we want to visualize the changes in life expectancy (`lifeExp`) over time (`year`) for a particular country.
+
+Create a new data frame with only the data from United States.
 
 ```{r render = reactable_10_rows, message = FALSE}
 # Select US cases
@@ -123,31 +133,23 @@ gap_US <- dplyr::filter(gapminder,
 gap_US
 ```
 
-::: reminder
-The code above is a covered in our course on Data Wrangling using the {dplyr} package. Data wrangling is the process of transforming and modifying existing data with the intent of making it more appropriate for analysis purposes. For example, this code segments used the `filter()` function to create a new data frame (`gap_US`) by choosing only a subset of rows of original `gapminder` data frame (only those that have "United States" in the `country` column).
-:::
 
-## Line graphs via `geom_line()`
-
-Now we're ready to feed the `gap_US` data frame to `ggplot()`, mapping **time** in years on the horizontal x axis and **life expectancy** on the vertical y axis.
-
-We can visualize this time series data by using `geom_line()` to create a line graph, instead of using `geom_point()` like we used previously to create scatterplots:
+We can visualize this time series data by using `geom_line()`:
 
 ```{r}
 # Simple line graph
 
 ```
 
-Much as with the `ggplot()` code that created the scatterplot of age and viral load with `geom_point()`, let's break down this code piece-by-piece in terms of the grammar of graphics:
-
 Within the `ggplot()` function call, we specify two of the components of the grammar of graphics as arguments:
 
 1.  The `data` to be the `gap_US` data frame by setting `data = gap_US`.
-2.  The `aes`thetic `mapping` by setting `mapping = aes(x = year, y = lifeExp)`. Specifically, the variable `year` maps to the `x` position aesthetic, while the variable `lifeExp` maps to the `y` position aesthetic.
+2.  The `aes`thetic `mapping` by setting `mapping = aes(x = year, y = lifeExp)`.
 
-After telling R which data and aesthetic mappings we wanted to plot we then added the third essential component, the `geom`etric object using the `+` sign, In this case, the geometric object was set to lines using `geom_line()`.
+Then the `geom`etric object using the `+` sign, In this case, the geometric object was set to lines using `geom_line()`.
 
 ::: practice
+**Practice**
 Create a time series plot of the GPD per capita (`gdpPercap`) recorded in the `gap_US` data frame by using `geom_line()` to create a line graph.
 
 ```{r eval=F, include=FALSE}
@@ -185,9 +187,7 @@ q1 <- "YOUR ANSWER HERE"
 
 The color, line width and line type of the line graph can be customized making use of `color`, `size` and `linetype` arguments, respectively.
 
-We've changed the color and size of geoms in previous lessons.
-
-Here we will add these as fixed aesthetics:
+We've used `color` and `size` in previous lessons.
 
 ```{r}
 # enhanced line graph with color and size as fixed aesthetics
@@ -197,11 +197,11 @@ ggplot(data = gap_US,
   geom_line() 
 ```
 
-In this lesson we introduce a new fixed aesthetic that is specific to line graphs: `linetype` (or `lty` for short).
+In this lesson we introduce a new fixed aesthetic that is specific to line graphs: **`linetype`** (or `lty` for short).
 
 ![](images/line_types.png)
 
-Line type can be specified using a name or with an integer. Valid line types can be set using a human readable character string: `"blank"`, `"solid"`, `"dashed"`, `"dotted"`, `"dotdash"`, `"longdash"`, and `"twodash"` are all understood by `linetype` or `lty`.
+Line type can be specified using a name or with an integer.
 
 ```{r}
 # Enhanced line graph with color, size, and line type as fixed aesthetics
@@ -213,13 +213,12 @@ ggplot(data = gap_US,
 
 ```
 
-In these line graphs, it can be hard to tell where exactly there data points are. In the next plot, we'll add points to make this clearer.
 
 ## Combining compatible geoms
 
-As long as the geoms are compatible, we can layer them on top of one another to further customize a graph.
+As long as `geom`s are compatible, we can layer them on top of one another to further customize a graph.
 
-For example, we can add points to our line graph using the `+` sign to add a second `geom` layer with `geom_point()`:
+For example, we can add points to our line graph using the `+` sign to add a second `geom` layer with **`geom_point()`**:
 
 ```{r}
 # Simple line graph with points
@@ -241,6 +240,7 @@ ggplot(data = gap_US,
 ```
 
 ::: practice
+**Practice**
 Building on the code above, visualize the relationship between time and **GPD per capita** from the `gap_US` data frame.
 
 Use both points and lines to represent the data.
@@ -266,9 +266,7 @@ q2 <- "YOUR ANSWER HERE"
 
 ## Mapping data to multiple lines
 
-In the previous section, we only looked at data from one country, but what if we want to plot data for multiple countries and compare?
-
-First let's add two more countries to our data subset:
+Let's add two more countries to our data subset:
 
 ```{r render = reactable_10_rows}
 # Create data subset for visualizing multiple categories
@@ -319,7 +317,9 @@ ggplot(data = gap_mini,
 
 In the graphs above, line types, colors and sizes are the same for the three groups.
 
-This doesn't tell us which is which though. We should add an aesthetic mapping that can help us identify which line belongs to which country, like color or line type.
+However, this doesn't tell us which line is which country. 
+
+We should add aesthetic attributes like color or line type.
 
 ```{r}
 # Map country to color
@@ -370,6 +370,7 @@ Try adding `mapping = aes()` in `geom_point()` and map `continent` to any valid 
 :::
 
 ::: practice
+**Practice**
 Using the `gap_mini` data frame, create a **population** growth chart with these aesthetic mappings:
 
 ![](images/pq3)
@@ -426,7 +427,7 @@ ggplot(data = gap_mini,
   geom_line(size = 1)
 ```
 
-In some cases the we might want to transform the axis scaling for better visualization. We can customize these scales with the `scale_*()` family of functions.
+We can customize these scales with `scale_*()` functions.
 
 ![](images/gg_min_build2.png)
 
@@ -436,7 +437,7 @@ In some cases the we might want to transform the axis scaling for better visuali
 
 ### Scale breaks
 
-Let's create a new subset of countries from `gapminder`, and this time we will plot changes in GDP over time.
+Let's create a new subset of countries from `gapminder`.
 
 ```{r render = reactable_10_rows}
 # Data subset to include India, China, and Thailand
@@ -500,6 +501,7 @@ ggplot(data = gap_mini2,
 ```
 
 ::: practice
+**Practice**
 We can customize scale breaks on a continuous **y**-axis values with **`scale_y_continuous()`**.
 
 Copy the code from the last example, and add `scale_y_continuous()` to add the following y-axis breaks:
@@ -525,11 +527,7 @@ q5 <- "YOUR ANSWER HERE"
 
 ### Logarithmic scaling
 
-In the last two mini sets, I chose three countries that had similar range of GDP or life expectancy for good scaling and readability so that we can make out these changes.
-
-But if we add a country to the group that significantly differs, default scaling is not so great.
-
-We'll look at an example plot where you may want to rescale the axes from linear to a log scale.
+Sometimes we may want to rescale from linear to a log scale.
 
 Let's add New Zealand to the previous set of countries and create `gap_mini3`:
 
@@ -553,9 +551,9 @@ ggplot(data = gap_mini3,
   scale_x_continuous(breaks = gap_years)
 ```
 
-The curves for India and China show an exponential increase in GDP per capita. However, the y-axes values for these two countries are much lower than that of New Zealand, so the lines are a bit squashed together. This makes the data hard to read. Additionally, the large empty area in the middle is not a great use of plot space.
+It is hard to read patterns in the data.
 
-We can address this by log-transforming the y-axis using `scale_y_log10()`, which log-scales the y -axis (as the name suggests). We will add this function as a new layer after a `+` sign, as usual:
+We improve this by log-transforming the y-axis using `scale_y_log10()`:
 
 ```{r}
 # Add scale_y_log10()
@@ -580,8 +578,10 @@ ggplot(data = gap_mini3,
   scale_x_continuous(breaks = gap_years) +
   scale_y_log10() 
 ```
+The grid lines show that the scale is nonlinear.
 
 ::: practice
+**Practice**
 First subset `gapminder` to only the rows containing data for **Uganda:**
 
 ```{r eval = F, include=FALSE}
@@ -612,7 +612,9 @@ Next, we can change the text of the axis labels to be more descriptive, as well 
 
 ## Labeling with `labs()`
 
-You can add labels to a plot with the `labs()` function. Arguments we can specify with the `labs()` function include:
+You can add labels to a plot with the `labs()` function. 
+
+Arguments we can specify with the `labs()` function include:
 
 -   `title`: Change or add a title
 -   `subtitle`: Add subtitle below the title
@@ -639,7 +641,8 @@ We add the `labs()` to our code using a `+` sign.
 First we will add the `x` and `y` arguments to `labs()`, and change the axis titles from the default (variable name) to something more informative.
 
 ```{r}
-# Rename axis titles
+# Rename axis titles to "Year" and "Life Expectancy"
+
 ggplot(data = gap_US, 
        mapping = aes(x = year, 
                      y = lifeExp)) +
@@ -749,6 +752,7 @@ The same syntax can be used to edit legend titles for other aesthetic mappings. 
 :::
 
 ::: practice
+**Practice**
 Create a time series plot comparing the trends in GDP per capita from 1952-2007 for **three countries** in the `gapminder` data frame.
 
 First, subset the data to three countries of your choice:
