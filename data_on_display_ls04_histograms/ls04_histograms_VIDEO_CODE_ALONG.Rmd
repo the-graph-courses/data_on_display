@@ -23,19 +23,19 @@ This is a CODE ALONG document where you can type code as you follow the lesson v
 
 We encourage you to do this; typing code with the teacher is the best way to learn the right syntax. 
 
-If you prefer to work with the completed document, please use the other Rmd instead!
+For better clarity, we reccomend viewing this document in VISUAL MODE.
 ```
 
-```{r, include = FALSE, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE, warning = FALSE, message = FALSE}
 # Load packages 
 if(!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse, knitr, here)
+pacman::p_load(tidyverse, knitr, here, patchwork)
 
 # Source functions 
 source(here("global/functions/lesson_functions.R"))
 
 # Source autograder script quietly 
-source(here("autograder/ls04_histograms_autograder.R"))
+source(here("lessons/ls04_histograms_autograder.R"))
 ```
 
 # Histograms with {ggplot2}
@@ -52,8 +52,7 @@ By the end of this lesson, you will be able to:
 ## Packages
 
 ```{r}
-pacman::p_load(tidyverse,
-               here)
+pacman::p_load()
 ```
 
 ## Childhood diarrheal diseases dataset
@@ -62,7 +61,7 @@ We will use the **`malidd`** dataset for plotting.
 
 ```{r message = F}
 # Import data from CSV
-malidd <- read_csv(here::here("data/clean/malidd.csv"))
+
 ```
 
 ::: recap

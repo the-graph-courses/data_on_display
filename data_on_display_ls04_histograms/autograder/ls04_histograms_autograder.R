@@ -67,7 +67,7 @@ pacman::p_load(tidyverse,
   Then put the variable you want to map on your x axis inside `mapping = aes()`. 
   Then, add the correct geometry function for a histogram.
   You need to assign the correct aesthetic arguments for color, fill, and transparency (alpha). These are FIXED aesthetics, so be sure to put these inside the geom_*() function and NOT inside the aes() function.
-  If all these are correct: look for typos, missing commas or plus signs, or unclosed brackets.' -> out
+  If all these are correct: look for typos, missing commas or plus signs, or unmatched brackets/parentheses.' -> out
   cat(out)
 }
 # solution of question
@@ -121,7 +121,7 @@ pacman::p_load(tidyverse,
 .HINT_q2 <- function(){
   'Axis labels in ggplot2 are modified using the labs() function, which was introduced in our lesson on line graphs.
   The text for each axis label should be within quotes. Check that it is identical to the text asked for in the question.
-  If all these are correct: look for typos, missing commas or plus signs, or unclosed brackets.' -> out
+  If all these are correct: look for typos, missing commas or plus signs, or unmatched brackets/parentheses.' -> out
   cat(out)
 }
 # solution of question
@@ -179,7 +179,12 @@ pacman::p_load(tidyverse,
 # [backend]
 # create one hint per question
 .HINT_q3 <- function(){
-  "" -> out
+  "First, supply the malidd data frame to the data layer of `ggplot()`.
+  Then assign the correct variable to the x axis inside `aes()`. 
+  Then, add the appropiety geometry function for a histogram.
+  You need to assign the correct aesthetic arguments for color, fill, and number of bins. These are FIXED aesthetics, so be sure to put these inside the geom_*() function and NOT inside the aes() function.
+  To get the number of bins that gives you no empty spaces, you will need to try different numbers. Try starting at a low number of bins like 15, and increase in small increments.
+  If all these are correct: look for typos, missing commas or plus signs, or unmatched brackets/parentheses." -> out
   cat(out)
 }
 # solution of question
@@ -234,7 +239,8 @@ pacman::p_load(tidyverse,
 # [backend]
 # create one hint per question
 .HINT_q4 <- function(){
-  "" -> out
+  "The freqrespi variable ranges from 24 to 60. To find the bin width needed to yield 18 bins, you can calculate (60-24)/18.
+  To align the breaks to the x-axis marks, you can set the boundary argument to the lowest value." -> out
   cat(out)
 }
 # solution of question
@@ -290,7 +296,10 @@ pacman::p_load(tidyverse,
 # [backend]
 # create one hint per question
 .HINT_q5 <- function(){
-  "" -> out
+  "Keep the same fill and color from the previous practice question.
+  Use the binwidth argument to set the intervals. 
+  Remember that these are FIXED aesthetics and should go in geom_histogram().
+  Then use the seq() function to set breaks inside scale_x_continuous()." -> out
   cat(out)
 }
 # solution of question
