@@ -262,7 +262,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
              mapping = aes(x = year, 
                            y = gdpPercap, 
                            color = country)) +
-      geom_line(size = 1) +
+      geom_line(linewidth = 1) +
       scale_x_continuous(breaks = gap_years) +
       scale_y_continuous(breaks = seq(from = 1000, to = 7000, by = 1000))
     
@@ -296,7 +296,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
        mapping = aes(x = year, 
                      y = gdpPercap, 
                      color = country)) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   scale_x_continuous(breaks = gap_years) +
   scale_y_continuous(breaks = seq(from = 1000, to = 7000, by = 1000))' -> out
   cat(out)
@@ -308,7 +308,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # First subset `gapminder` to only the rows containing data for **Uganda:**
-# use **`gap_Uganda`** to create a time series plot of population (**`pop`**) over time (**`year`**). Transform the y axis to a log scale, edit the scale breaks to **`gap_years`**, change the line color to `forestgreen` and the size to 1mm.
+# use **`gap_Uganda`** to create a time series plot of population (**`pop`**) over time (**`year`**). Transform the y axis to a log scale, edit the scale breaks to **`gap_years`**, change the line color to `forestgreen` and the line width to 1mm.
 
 # [backend]
 .CHECK_q6 <-
@@ -317,7 +317,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
     
     .q6_correct <- 
       ggplot(data = gap_Uganda, aes(x = year, y = pop)) + 
-      geom_line(size = 1, color = "forestgreen")+
+      geom_line(linewidth = 1, color = "forestgreen")+
       scale_x_continuous(breaks = gap_years) +
       scale_y_log10()
     
@@ -344,13 +344,13 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
   'First, check that your essential layers are correct dataframe (gap_Uganda), aesthetic mappings, and geom function.
    You need to make two scale modifications: x-axis scale breaks set to match the years in the dataset, 
   and transform the y-axis scale to logarithmic (use the scale function we just learned).
-   Add fixed aesthetics color = "foestgreen", and  "size = 1" in geom_line(), but make sure not to add additional modifications that the question did not ask for, or the CHECK function will deem it incorrect.' -> out
+   Add fixed aesthetics color = "foestgreen", and  "linewidth = 1" in geom_line(), but make sure not to add additional modifications that the question did not ask for, or the CHECK function will deem it incorrect.' -> out
   cat(out)
 }
 # solution of question
 .SOLUTION_q6 <- function(){
   'ggplot(data = gap_Uganda, mapping = aes(x = year, y = pop)) + 
-      geom_line(size = 1, color = "forestgreen")+
+      geom_line(linewidth = 1, color = "forestgreen")+
       scale_x_continuous(breaks = gap_years) +
       scale_y_log10()' -> out
   cat(out)
@@ -370,7 +370,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
              mapping = aes(y = lifeExp, 
                            x = year, 
                            color = country)) +
-      geom_line(size = 1, alpha = 0.5) +
+      geom_line(linewidth = 1, alpha = 0.5) +
       geom_point(size = 2) +
       scale_x_continuous(breaks = gap_years)
     
@@ -404,7 +404,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
        mapping = aes(y = lifeExp, 
                      x = year, 
                      color = country)) +
-  geom_line(size = 1, alpha = 0.5) +
+  geom_line(linewidth = 1, alpha = 0.5) +
   geom_point(size = 2) +
   scale_x_continuous(breaks = gap_years)' -> out
   cat(out)
@@ -424,7 +424,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
              mapping = aes(y = lifeExp, 
                            x = year, 
                            color = country)) +
-      geom_line(size = 1, alpha = 0.5) +
+      geom_line(linewidth = 1, alpha = 0.5) +
       geom_point(size = 2) +
       scale_x_continuous(breaks = gap_years) +
       labs(x = "Year", 
@@ -462,7 +462,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
        mapping = aes(y = lifeExp, 
                      x = year, 
                      color = country)) +
-  geom_line(size = 1, alpha = 0.5) +
+  geom_line(linewidth = 1, alpha = 0.5) +
   geom_point(size = 2) +
   scale_x_continuous(breaks = gap_years) +
   labs(x = "Year", 
