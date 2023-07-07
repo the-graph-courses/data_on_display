@@ -23,7 +23,7 @@ This is a CODE ALONG document where you can type code as you follow the lesson v
 
 We encourage you to do this; typing code with the teacher is the best way to learn the right syntax. 
 
-If you prefer to work with the completed document, please use the the "*_filled" Rmd instead!
+For better clarity, we reccomend viewing this document in VISUAL MODE.
 ```
 
 ```{r, include = FALSE, warning = FALSE, message = FALSE}
@@ -32,10 +32,10 @@ if(!require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse, knitr, gapminder, here)
 
 # Source functions 
-source(here("global/functions/misc_functions.R"))
+source(here("global/functions/lesson_functions.R"))
 
 # Source autograder script quietly 
-mute(here::here("autograder/ls03_line_autograder.R"))
+source(here::here("autograder/ls03_line_autograder.R"))
 ```
 
 # Lines, scales, and labels in {ggplot2}
@@ -48,7 +48,7 @@ mute(here::here("autograder/ls03_line_autograder.R"))
 4.  You can **manipulate axis scales** for continuous data with **`scale_*_continuous()`** and scale\_\*\_log10().
 5.  You can **add labels** to a plot such as a **`title`**, **`subtitle`**, or **`caption`** with the **`labs()`** function.
 
-![](images/paste-3755C0EB.png)
+![](images/gap_gdp_asia.png)
 
 ## Introduction
 
