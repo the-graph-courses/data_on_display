@@ -253,7 +253,7 @@ ggplot(data =  malidd,
 We can use the **`boundary`** argument to align the bins to the x-axis intervals.
 
 ```{r}
-# Set `boundary` equal to the low end of
+# Set `boundary` equal to the low end of the variable
 ggplot(data =  malidd, 
        mapping = aes(x = height_cm)) +
   geom_histogram(color = "white", 
