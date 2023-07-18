@@ -35,7 +35,7 @@ pacman::p_load(tidyverse, knitr, here, patchwork)
 source(here("global/functions/lesson_functions.R"))
 
 # Source autograder script quietly 
-source(here("lessons/ls04_histograms_autograder.R"))
+source(here("autograder/ls04_histograms_autograder.R"))
 ```
 
 # Histograms with {ggplot2}
