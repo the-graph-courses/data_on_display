@@ -30,7 +30,7 @@ pacman::p_load(tidyverse, knitr, gapminder, here)
 source(here("global/functions/lesson_functions.R"))
 
 # Source autograder script quietly 
-source(here::here("autograder/ls03_line_autograder.R"))
+source(here::here("autograder/ls03_line_graphs_autograder.R"))
 ```
 
 # Learning Objectives
