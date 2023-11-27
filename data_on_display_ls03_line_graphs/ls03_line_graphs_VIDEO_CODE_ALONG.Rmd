@@ -746,7 +746,7 @@ The same syntax can be used to edit legend titles for other aesthetic mappings. 
 
 ::: practice
 **Practice**
-Create a time series plot comparing the trends in GDP per capita from 1952-2007 for **three countries** in the `gapminder` data frame.
+Create a time series plot comparing the trends in life expectancy from 1952-2007 for **three countries** in the `gapminder` data frame.
 
 First, subset the data to three countries of your choice:
 
