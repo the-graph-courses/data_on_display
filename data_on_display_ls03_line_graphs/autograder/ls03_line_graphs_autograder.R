@@ -24,9 +24,9 @@ pacman::p_load(tidyverse,
 ## load data ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-gapminder <- gapminder::gapminder
+.gapminder <- gapminder::gapminder
 
-gap_US <- dplyr::filter(gapminder, country == "United States")
+.gap_US <- dplyr::filter(gapminder, country == "United States")
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## q1 ----
@@ -40,7 +40,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
     .problem_number <<- 1
     
     .q1_correct <- 
-      ggplot(gap_US, 
+      ggplot(.gap_US, 
              mapping = aes(x = year, 
                            y = gdpPercap)) +
       geom_line() 
@@ -91,7 +91,7 @@ gap_US <- dplyr::filter(gapminder, country == "United States")
     .problem_number <<- 2
     
     .q2_correct <- 
-      ggplot(gap_US, 
+      ggplot(.gap_US, 
              mapping = aes(x = year, 
                            y = gdpPercap)) +
       geom_line(lty = "dotdash") +
