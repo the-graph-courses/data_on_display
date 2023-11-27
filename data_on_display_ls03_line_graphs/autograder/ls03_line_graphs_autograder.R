@@ -367,7 +367,7 @@ pacman::p_load(tidyverse,
     
     .q7_correct <- 
       ggplot(data = my_gap_mini, 
-             mapping = aes(y = gdpPercap, 
+             mapping = aes(y = lifeExp, 
                            x = year, 
                            color = country)) +
       geom_line(linewidth = 1, alpha = 0.5) +
@@ -401,7 +401,7 @@ pacman::p_load(tidyverse,
 # solution of question
 .SOLUTION_q7 <- function(){
   'ggplot(data = my_gap_mini, 
-       mapping = aes(y = gdpPercap, 
+       mapping = aes(y = lifeExp, 
                      x = year, 
                      color = country)) +
   geom_line(linewidth = 1, alpha = 0.5) +
@@ -421,7 +421,7 @@ pacman::p_load(tidyverse,
     
     .q8_correct <- 
       ggplot(data = my_gap_mini, 
-             mapping = aes(y = gdpPercap, 
+             mapping = aes(y = lifeExp, 
                            x = year, 
                            color = country)) +
       geom_line(linewidth = 1, alpha = 0.5) +
@@ -459,7 +459,7 @@ pacman::p_load(tidyverse,
 # solution of question
 .SOLUTION_q8 <- function(){
   'ggplot(data = my_gap_mini, 
-       mapping = aes(y = gdpPercap, 
+       mapping = aes(y = lifeExp, 
                      x = year, 
                      color = country)) +
   geom_line(linewidth = 1, alpha = 0.5) +
