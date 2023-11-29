@@ -24,7 +24,7 @@ For better clarity, we recommend viewing this document in VISUAL MODE.
 ```{r include = FALSE, warning = FALSE, message = FALSE}
 # Load packages 
 if(!require(pacman)) install.packages("pacman")
-
+p_load(tidyverse, here)
 # Source functions 
 source(here("global/functions/lesson_functions.R"))
 
