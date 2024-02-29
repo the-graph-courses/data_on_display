@@ -1,0 +1,465 @@
+---
+title: 'Notes de cours | Les graphiques de dispersion et lignes de lissage'
+output:
+  html_document:
+    number_sections: true
+    toc: true
+    toc_float: true
+    css: !expr here::here("global/style/style.css")
+    highlight: kate
+---
+
+```{r, eval = F, include = F}
+Salut étudiant de GRAPH Courses !
+
+Ceci est un document CODE ALONG où vous pouvez taper le code pendant que vous suivez la vidéo de la leçon.
+
+Nous vous encourageons à le faire ; taper le code avec l'enseignant est le meilleur moyen d'apprendre la bonne syntaxe.
+```
+
+```{r setup, include = FALSE, warning = FALSE}
+knitr::opts_chunk$set(error = T)
+
+# Charger les packages 
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, 
+               RColorBrewer,
+               knitr, 
+               here)
+
+# Sourcer les fonctions de la leçon 
+source(here("global/functions/lesson_functions.R"))
+source(here("autograder/fr_ls02_scatter_autograder.R"))
+```
+
+## Objectifs d'apprentissage
+
+1.  Visualiser les relations entre des variables quantitatives en utilisant des **diagrammes de dispersion** avec **`geom_point()`**.
+
+2.  Utiliser **`color`** comme argument esthétique pour mapper les variables d'un dataset sur les points.
+
+3.  Changer la taille, la forme, la couleur, le remplissage et l'opacité des objets géométriques en définissant des **esthétiques fixes**.
+
+4.  Ajouter une **ligne de tendance** à un diagramme de dispersion avec **`geom_smooth()`**.
+
+## Packages
+
+```{r}
+# Charger les packages 
+pacman::p_load()
+```
+
+## Maladies diarrhéiques chez l'enfant au Mali
+
+• Les données proviennent d'une étude observationnelle prospective sur la diarrhée aiguë chez les enfants.
+
+• L'étude a été menée au Mali et au Bangladesh.
+
+![](images/child_dia_study.jpg)
+
+• Importer le dataframe **`malidd`** que nous utiliserons pour créer des graphiques :
+
+```{r message = FALSE}
+# Importer les données prétraitées dans l'environnement RStudio
+malidd <- read_csv(here("data/clean/malidd.csv"))
+malidd
+```
+
+## Diagrammes de dispersion via `geom_point()`
+
+Commençons par visualiser la relation entre :
+
+1.  `age_months` : **âge** sur l'axe des **x**
+
+2.  `viral_load` : **charge virale** sur l'axe des **y**
+
+```{r}
+# Diagramme de dispersion basique de la charge virale par rapport à l'âge
+
+```
+
+• La charge virale diminue généralement avec l'**âge**.
+
+Il est temps de vous entraîner à créer des graphiques !
+
+::: practice
+En utilisant le dataframe `malidd`, créez un diagramme de dispersion montrant la relation entre l'âge et la taille (`height_cm`).
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_height <- "VOTRE_RÉPONSE_ICI"
+age_height
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_height()
+.HINT_age_height()
+```
+:::
+
+## Modifier l'esthétique des points
+
+::: reminder
+**Rappel**
+
+Il existe deux méthodes pour modifier les propriétés esthétiques de vos `geom`s (dans ce cas, les points) :
+
+1.  Vous pouvez transmettre des informations sur vos données en *associant* (*mapping*) les variables de votre ensemble de données sur les éléments esthétiques de votre graphique à l'intérieur de la fonction `aes()` dans l'argument `mapping`
+
+2.  Vous pouvez également fixer les propriétés esthétiques de vos `geom`s à une valeur *fixe*, comme argument direct de votre fonction `geom_*()` ; c'est-à-dire qu'elles vont *en dehors* de `aes()`.
+:::
+
+### Mapping des données aux esthétiques
+
+• D'abord, nous allons mapper une variable à un élément esthétique à l'intérieur de `aes()`
+
+• Cela nous permet de visualiser une troisième variable sur le diagramme de dispersion
+
+Mappons `height_cm` à la couleur des points :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point()
+```
+
+• {ggplot2} attribue automatiquement une **échelle** à l'élément esthétique pour correspondre aux valeurs de la variable
+
+• Les points sont colorés par différentes nuances de bleu, les couleurs plus foncées représentant des valeurs plus faibles
+
+• La taille **augmente** avec l'âge
+
+Mappons une variable binaire - `breastfeeding` - à la couleur :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point()
+```
+
+• Gradient de couleur
+
+• Le dégradé représente un continuum de valeurs
+
+• Mais `breastfeeding` n'a que deux valeurs distinctes : 0 ou 1
+
+La variable `breastfeeding` dans `malidd` n'est pas un facteur :
+
+```{r}
+class(malidd$breastfeeding)
+```
+
+• L'échelle de couleurs continue n'est pas appropriée
+
+Ajoutez la fonction `factor()` autour d'une variable pour dire à `ggplot()` de la traiter comme un facteur :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point()
+```
+
+• {ggplot2} attribue un niveau unique de l'esthétique à chaque valeur unique du facteur
+
+::: practice
+**Exercice 2**
+
+• Utilisez le dataframe `malidd` pour créer un diagramme de dispersion montrant la relation entre l'âge et la charge virale, et mappez une troisième variable, la fréquence respiratoire (`freqrespi`) à la couleur :
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_height_respi <-  "VOTRE_RÉPONSE_ICI" 
+age_height_respi
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_height_respi()
+.HINT_age_height_respi()
+```
+
+• Créez le même diagramme de dispersion âge vs taille, mais cette fois, mappez la variable binaire `fever` à la couleur des points. N'oubliez pas que `fever` doit être traité comme un facteur.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_height_fever <-  "VOTRE_RÉPONSE_ICI"
+age_height_fever
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_height_fever()
+.HINT_age_height_fever()
+```
+:::
+
+### Définir les esthétiques fixes
+
+• Les esthétiques fixes sont constantes sur tout le graphique et ne varient pas en fonction des données.
+
+• Les esthétiques fixes sont ajoutées comme argument directement dans la fonction `geom_*()` *en dehors* de `mapping = aes()`.
+
+Voici certains des arguments esthétiques que nous pouvons placer directement dans `geom_point()`:
+
+• `color` - couleur du point ou couleur du contour du point
+
+• `size` - taille du point
+
+• `alpha` - opacité du point
+
+• `shape` - forme du point
+
+• `fill` - couleur de remplissage du point (s'applique uniquement si le point a un contour)
+
+#### Changer `color`, `size` et `alpha`
+
+• Attribuez une valeur fixe aux points en définissant l'argument `color` directement dans `geom_point()`.
+
+Changez la couleur des points en bleu acier :
+
+```{r}
+# Modifier le diagramme de dispersion originel en définissant `color = "steelblue"`
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point()
+```
+
+Maintenant, nous allons modifier l'esthétique `size` des points en lui attribuant un nombre fixe.
+
+La taille par défaut est de 1 mm, alors choisissons une valeur plus grande :
+
+```{r}
+# Définir la taille à 2 mm en ajoutant `size = 2`
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                      y = viral_load)) + 
+  geom_point(color = "steelblue")
+```
+
+• L'esthétique `alpha` contrôle le niveau d'opacité des `geom`s.
+
+• `alpha` varie de 0 (complètement transparent) à 1 (complètement opaque).
+
+Rendons nos points plus transparents en réduisant l'opacité :
+
+```{r}
+# Définir l'opacité à 75% en ajoutant `alpha = 0.75`
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point(color = "steelblue", 
+             size = 2)
+```
+
+• Nous pouvons voir où les points se chevauchent
+
+::: practice
+• Créez un nuage de points avec les mêmes variables que l'exemple précédent, mais changez la couleur des points à `cornflowerblue`, augmentez la taille des points à 3 mm et réglez l'opacité à 60%.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_viral_blue <-  "VOTRE_RÉPONSE_ICI"
+age_viral_blue
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_viral_blue()
+.HINT_age_viral_blue()
+```
+:::
+
+#### Changer `shape` et `fill`
+
+• Nous pouvons changer la forme des points en définissant l'esthétique `shape` à un nombre correspondant à la forme souhaitée.
+
+• {ggplot2} accepte les nombres suivants:
+
+![Codage numérique des différentes formes dans {ggplot2}](images/ggplot_shapes.png){width="400"}
+
+• Les formes 21 à 24 acceptent à la fois les esthétiques `color` et `fill`
+
+Modifions notre nuage de points originel en choisissant une forme de point remplissable :
+
+```{r}
+# Définir la forme à des cercles remplissables en ajoutant `shape = 21`
+ggplot(data = malidd,        
+       mapping = aes(x = age_months,                      
+                     y = viral_load)) +   
+  geom_point()
+```
+
+L'esthétique `color` ne change que le contour de nos points :
+
+```{r}
+# Définir la couleur du contour des formes en ajoutant `color = cyan4`
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point(shape = 21)         
+```
+
+Maintenant, remplissons les points :
+
+```{r}
+# Définir la couleur intérieure des formes en ajoutant `fill = "seagreen"` 
+ggplot(data = malidd,        
+       mapping = aes(x = age_months,                      
+                     y = viral_load)) +   
+  geom_point(shape = 21,             
+             color = "cyan4")
+```
+
+Nous pouvons améliorer la lisibilité en augmentant la taille et en réduisant l'opacité avec `size` et `alpha` :
+
+```{r}
+ggplot(data = malidd,        
+       mapping = aes(x = age_months,
+                     y = viral_load)) +   
+  geom_point(shape = 21,             
+             color = "cyan4",             
+             fill = "seagreen")
+```
+
+## Ajout d'une ligne de tendance
+
+• Il peut être difficile de visualiser des relations ou des tendances avec seulement des points
+
+• Nous pouvons ajouter une ligne de lissage à un nuage de points
+
+Nous allons prendre notre nuage de points et appliquer une ligne de lissage en ajoutant une autre couche géométrique avec `geom_smooth()` :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point()
+```
+
+• `geom_smooth()` utilise par défaut une méthode d'estimation non paramétrique appelée "loess" (LOcally Estimated Scatterplot Smoothing)
+
+• Utilisons un modèle linéaire généralisé en définissant l'argument `method` à l'intérieur de `geom_smooth()`:
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point() +
+  geom_smooth()
+```
+
+• `se = FALSE` supprime l'intervalle de confiance autour de la ligne de tendance
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point() +
+  geom_smooth(method = "glm")
+```
+
+• `color = "firebrick"` rend notre ligne de tendance rouge
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point() +
+  geom_smooth(method = "glm",
+              se = FALSE)
+```
+
+• Il existe une *relation négative* entre `age_months` et `viral_load`
+
+Maintenant, nous allons ajouter une troisième variable à ce graphique.
+
+• `vomit` est une variable binaire provenant du jeu de données `malidd`.
+
+• Elle enregistre si le patient a vomi ou non.
+
+Nous allons l'associer à l'esthétique de couleur :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point() +
+  geom_smooth(method = "glm",
+              se = FALSE,
+              color = "darkred")
+```
+
+Changeons également la méthode de lissage pour le modèle additif généralisé ("`gam`") et apportons quelques modifications esthétiques à la ligne dans la couche `geom_smooth()` :
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+  geom_point(mapping = aes(color = factor(vomit))) +
+  geom_smooth(method = "glm",
+              se = FALSE,
+              color = "darkred")
+```
+
+-   Les points bleus se situent principalement au-dessus de la ligne de tendance.
+
+-   Les enfants ayant des charges virales plus élevées étaient plus susceptibles de présenter des symptômes de vomissements.
+
+::: practice
+-   Créez un nuage de points avec les variables `age_months` et `height_cm`. Réglez la couleur des points sur "steelblue", la taille sur 2,5 mm, l'opacité sur 80 %. Ajoutez ensuite une ligne de tendance avec la méthode de lissage "lm" (modèle linéaire). Pour faire ressortir la ligne de tendance, réglez sa couleur sur "indianred3".
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_height_2 <-  "VOTRE_RÉPONSE_ICI"
+age_height_2
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_height_2()
+.HINT_age_height_2()
+```
+
+-   Recréez le graphique que vous avez réalisé dans la question précédente, mais cette fois-ci, adaptez le code pour changer la forme des points en rectangles inclinés (numéro 23), et ajoutez la variable de température corporelle (`temp`) en **l'associant** à la couleur de remplissage des points.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+age_height_3 <-  "VOTRE_RÉPONSE_ICI"
+age_height_3
+```
+
+```{r eval = FALSE, include = FALSE}
+# Vérifiez votre réponse :
+.CHECK_age_height_3()
+.HINT_age_height_3()
+```
+:::
+
+## Objectifs d'apprentissage
+
+1.  Visualiser les relations entre des variables quantitatives en utilisant des **diagrammes de dispersion** avec **`geom_point()`**.
+
+2.  Utiliser **`color`** comme argument esthétique pour mapper les variables d'un dataset sur les points.
+
+3.  Changer la taille, la forme, la couleur, le remplissage et l'opacité des objets géométriques en définissant des **esthétiques fixes**.
+
+4.  Ajouter une **ligne de tendance** à un diagramme de dispersion avec **`geom_smooth()`**.
+
+# Contributeurs {.unnumbered}
+
+Ont contribué à ce cours : `r .tgc_contributors_list(ids = c("joy", "imane", "admin"))`
+
+# Références {.unnumbered}
+
+Le contenu de ce cours a été adapté en partie des sources suivantes :
+
+-   Ismay, Chester, and Albert Y. Kim. 2022. *A ModernDive into R and the Tidyverse*. <https://moderndive.com/>.
+-   Kabacoff, Rob. 2020. *Data Visualization with R*. <https://rkabacoff.github.io/datavis/>.
+-   Giroux-Bougard, Xavier, Maxwell Farrell, Amanda Winegardner, Étienne Low-Decarie and Monica Granados. 2020. *Workshop 3: Introduction to Data Visualisation with {ggplot2}*. <http://r.qcbs.ca/workshop03/book-en/>.
+
+`r .tgc_license()`
