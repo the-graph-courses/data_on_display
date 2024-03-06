@@ -1,0 +1,334 @@
+---
+title: 'Notes de cours | Les histogrammes avec {ggplot2}'
+output:
+  html_document:
+    number_sections: true
+    toc: true
+    css: !expr here::here("global/style/style.css")
+    highlight: kate
+---
+
+```{r, eval = F, include = F}
+Salut étudiant de GRAPH Courses !
+
+Ceci est un document CODE ALONG où vous pouvez taper le code pendant que vous suivez la vidéo de la leçon.
+
+Nous vous encourageons à le faire ; taper le code avec l'enseignant est le meilleur moyen d'apprendre la bonne syntaxe.
+```
+
+```{r setup, include = FALSE, warning = FALSE}
+knitr::opts_chunk$set(error = T)
+
+# Charger les packages 
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, 
+               RColorBrewer,
+               knitr, 
+               here)
+
+# Sourcer les fonctions de la leçon 
+source(here("global/functions/lesson_functions.R"))
+```
+
+# Histogrammes avec {ggplot2}
+
+## Objectifs d'apprentissage
+
+1.  Tracer un histogramme pour visualiser la distribution de variables continues en utilisant **`geom_histogram()`**.
+
+2.  Ajuster le nombre ou la largeur des classes (bins) d'un histogramme à l'aide des paramètres **`bins`** ou **`binwidth`**.
+
+3.  Décaler et aligner les classes d'un histogramme avec l'argument **`boundary`**.
+
+4.  Définir les limites des classes avec l'argument **`breaks`**.
+
+## Packages
+
+```{r}
+pacman::p_load()
+```
+
+## Maladies diarrhéiques chez l'enfant au Mali
+
+Nous allons visualiser la distribution des variables numériques du dataframe `malidd`.
+
+```{r message = F}
+# Importer les données depuis un CSV
+malidd <- read_csv(here("data/clean/malidd.csv"))
+malidd
+```
+
+::: recap
+**Récapitulatif**
+
+Cet ensemble de données provient d'une étude menée au Mali en 2020 sur la diarrhée chez les enfants âgés de 0 à 59 mois.
+:::
+
+```{r}
+# Afficher les premières lignes du dataframe
+head()
+```
+
+## Histogrammes basiques avec `geom_histogram()`
+
+Utilisons maintenant {ggplot2} pour tracer la distribution de la variable **`height_cm`**.
+
+La fonction `geom_*()` utilisée pour les histogrammes est **`geom_histogram()`**
+
+```{r}
+# Histogramme simple montrant la distribution de height_cm
+
+```
+
+Ajoutons un contour aux barres :
+
+```{r}
+# Définir la couleur à "white" (blanc)
+ggplot(data =  malidd , 
+       mapping = aes(x = height_cm)) +
+  geom_histogram()
+```
+
+Nous pouvons aussi ajouter une couleur de remplissage avec `fill` :
+
+```{r}
+# Définir la couleur de remplissage à "steelblue"
+ggplot(data =  malidd , 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white")
+```
+
+::: practice
+-   Tracez un histogramme montrant la distribution de l'âge (`age_months`) dans `malidd`. Définissez les bordures et le remplissage des barres à "seagreen", et réduisez l'opacité à 40%.
+
+```{r include = FALSE, message=FALSE, warning=FALSE}
+# Créez votre graphique
+q1 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+
+# Assurez-vous que "q1" apparaît dans votre onglet Environnement.
+```
+
+```{r eval=F, include=FALSE}
+# Vérifiez votre réponse en exécutant cette fonction de vérification (aucune entrée requise). La sortie vous indiquera si vous avez répondu correctement ou non.
+.CHECK_q1()
+
+# Vous pouvez demander un indice en exécutant cette fonction d'indice (aucune entrée requise).
+.HINT_q1()
+```
+
+-   En vous basant sur le code précédent, modifiez les titres des axes pour "Âge (mois)" et "Nombre d'enfants", respectivement.
+
+```{r include = FALSE, message=FALSE, warning=FALSE}
+# Créez votre graphique
+q2 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+
+# Vérifiez votre réponse
+.CHECK_q2()
+.HINT_q2()
+```
+:::
+
+# Ajuster les classes dans un histogramme
+
+Si nous n'ajustons pas manuellement le nombre de classes dans `geom_histogram()`, nous obtenons un message d'avertissement.
+
+```{r}
+# Le message d'avertissement nous dit de changer la valeur par défaut de 30 bins
+ggplot(data =  malidd , 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue")
+```
+
+Nous pouvons modifier le nombre de classes en utilisant l'un de ces trois arguments de `geom_histogram()` :
+
+1.  Définir le nombre de classes avec **`bins`**
+
+2.  Définir la largeur des classes avec **`binwidth`**
+
+3.  Définir les limites des classes avec **`breaks`**
+
+Ce sont des esthétiques fixes, donc elles vont à l'intérieur de `geom_histogram()`.
+
+## Définir le nombre de classes avec `bins`
+
+Définissez `bins` égal à un **entier** dans `geom_histogram()` :
+
+```{r}
+# Essayer différents nombres de classes
+ggplot(data =  malidd , 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue")
+```
+
+::: practice
+Traçez un histogramme de la fréquence respiratoire (`freqrespi`), qui est mesurée en respirations par minute. Réglez la couleur de remplissage à "indianred3" et la couleur de la bordure à "lightgray".
+
+Notez qu'avec les 30 classes par défaut, il existe certains intervalles pour lesquels aucune barre n'est tracée (c'est-à-dire qu'il n'y avait aucune observation dans cet intervalle).
+
+Diminuez le nombre de classes jusqu'à ce qu'il n'y ait plus d'intervalles vides. Sélectionnez la valeur la plus élevée pour laquelle il n'y a pas d'espaces vides.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+q3 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+
+# Vérifiez votre réponse 
+.CHECK_q3()
+.HINT_q3()
+```
+:::
+
+## Définir la largeur des classes avec `binwidth`
+
+Définissez `binwidth` égal à une **valeur numérique** dans `geom_histogram()` :
+
+```{r}
+# Essayer différentes largeurs de bin
+ggplot(data =  malidd, 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue")
+
+```
+
+Examiner la plage de la variable peut nous aider à choisir une largeur de classe appropriée.
+
+```{r}
+range()
+```
+
+```{r}
+ggplot(data =  malidd, 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue")
+```
+
+Nous pouvons utiliser l'argument **`boundary`** pour aligner les barres avec les intervalles de l'axe des x.
+
+```{r}
+# Définir `boundary` égal à la valeur minimale de height_cm
+ggplot(data =  malidd, 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue", 
+                 binwidth = 5)
+```
+
+::: practice
+Créez le même histogramme de la variable `freqrespi` en définissant cette fois-ci la largeur des classes de manière à obtenir 18 classes. Ensuite, alignez les classes sur les valeurs de l'axe des x en ajustant les limites des classes.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+q4 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+
+# Vérifiez votre réponse 
+.CHECK_q4()
+.HINT_q4()
+```
+:::
+
+## Modifier les limites des classes avec `breaks`
+
+Définissez `breaks` égal à un **vecteur numérique** dans `geom_histogram()` :
+
+```{r}
+# Fournir un vecteur qui couvre la plage de valeurs de height_cm
+ggplot(data =  malidd, 
+       mapping = aes(x = height_cm)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue")
+```
+
+::: practice
+Tracez l'histogramme de `freqrespi` avec des limites allant de la valeur la plus basse de `freqrespi` à la plus élevée et des intervalles de 4.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+"ÉCRIVEZ_VOTRE_CODE_ICI"
+```
+
+Ensuite, ajustez l'échelle de l'axe des abscisses en ajoutant une fonction scale\_\*(). Configurez la plage valeurs de 24 à 60, avec des intervalles de 8.
+
+```{r message=TRUE, warning=TRUE, include= FALSE}
+# Créez votre graphique
+q5 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+
+# Vérifiez votre réponse 
+.CHECK_q5()
+.HINT_q5()
+```
+:::
+
+# Contributeurs {.unnumbered}
+
+Les membres suivants ont contribué à ce cours :
+
+`r .tgc_contributors_list(ids = c("joy", "imane", "admin"))`
+
+# Références {.unnumbered}
+
+Le contenu de ce cours a été en partie adapté des sources suivantes :
+
+-   Ismay, Chester, and Albert Y. Kim. 2022. *A ModernDive into R and the Tidyverse*. <https://moderndive.com/>.
+-   Chang, Winston. 2013. *R Graphics Cookbook: Practical Recipes for Visualizing Data*. 1st edition. Beijing Köln: O'Reilly Media.
+
+# Solutions d'exercices {.unnumbered}
+
+**Exercice 1**
+
+```{r}
+ggplot(data = malidd, 
+         mapping = aes(x = age_months)) +
+    geom_histogram(fill = "seagreen",
+                   color = "seagreen",
+                   alpha = 0.4)
+
+```
+
+```{r}
+ggplot(data = malidd, 
+             mapping = aes(x = age_months)) +
+      geom_histogram(fill = "seagreen",
+                     color = "seagreen",
+                     alpha = 0.4) +
+      labs(x = "Age (mois)",
+           y = "Nombre d'enfants")
+```
+
+**Exercice 2**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = freqrespi)) +
+    geom_histogram(fill = "indianred3",
+                   color = "lightgray",
+                   bins = 20)
+```
+
+**Exercice 3**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = freqrespi)) +
+    geom_histogram(binwidth = 2,
+                   fill = "indianred3",
+                   color = "lightgray",
+                   boundary = 24)
+```
+
+**Exercice 4**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = freqrespi)) +
+    geom_histogram(fill = "indianred3",
+                   color = "lightgray", 
+                   breaks = seq(from = min(malidd$freqrespi),
+                                to = max(malidd$freqrespi),
+                                by = 4)) +
+  scale_x_continuous(breaks = seq(24, 60, 8))
+```
+
+`r .tgc_license()`
