@@ -29,7 +29,7 @@ pacman::p_load(tidyverse,
 
 # Sourcer les fonctions de la leçon 
 source(here("global/functions/lesson_functions.R"))
-source(here("autograder/ls01_gg_intro_autograder.R"))
+source(here("autograder/fr_ls01_gg_intro_autograder.R"))
 ```
 
 # Objectifs d'apprentissage
