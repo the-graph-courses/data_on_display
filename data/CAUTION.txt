@@ -1,0 +1,1 @@
+Note that our R data viz taxonomy lesson reads in the tips dataset from this repo, so do not delete
