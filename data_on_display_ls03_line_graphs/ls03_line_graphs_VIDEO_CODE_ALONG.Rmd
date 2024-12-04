@@ -238,7 +238,7 @@ Building on the code above, visualize the relationship between time and **GPD pe
 
 Use both points and lines to represent the data.
 
-Change the line type of the line and the color of the points to any valid values of your choice.
+Change the line type of the line to "dotdash" and the color of the points to "aquamarine".
 
 ```{r, include=FALSE}
 # Write code to create your plot:
