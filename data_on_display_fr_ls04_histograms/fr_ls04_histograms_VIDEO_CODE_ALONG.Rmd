@@ -101,30 +101,16 @@ ggplot(data =  malidd ,
 ::: practice
 -   Tracez un histogramme montrant la distribution de l'âge (`age_months`) dans `malidd`. Définissez les bordures et le remplissage des barres à "seagreen", et réduisez l'opacité à 40%.
 
-```{r include = FALSE, message=FALSE, warning=FALSE}
-# Créez votre graphique
-q1 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Assurez-vous que "q1" apparaît dans votre onglet Environnement.
-```
-
-```{r eval=F, include=FALSE}
-# Vérifiez votre réponse en exécutant cette fonction de vérification (aucune entrée requise). La sortie vous indiquera si vous avez répondu correctement ou non.
-.CHECK_q1()
-
-# Vous pouvez demander un indice en exécutant cette fonction d'indice (aucune entrée requise).
-.HINT_q1()
 ```
 
 -   En vous basant sur le code précédent, modifiez les titres des axes pour "Âge (mois)" et "Nombre d'enfants", respectivement.
 
-```{r include = FALSE, message=FALSE, warning=FALSE}
-# Créez votre graphique
-q2 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse
-.CHECK_q2()
-.HINT_q2()
 ```
 :::
 
@@ -169,13 +155,9 @@ Notez qu'avec les 30 classes par défaut, il existe certains intervalles pour le
 
 Diminuez le nombre de classes jusqu'à ce qu'il n'y ait plus d'intervalles vides. Sélectionnez la valeur la plus élevée pour laquelle il n'y a pas d'espaces vides.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-q3 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q3()
-.HINT_q3()
 ```
 :::
 
@@ -219,13 +201,9 @@ ggplot(data =  malidd,
 ::: practice
 Créez le même histogramme de la variable `freqrespi` en définissant cette fois-ci la largeur des classes de manière à obtenir 18 classes. Ensuite, alignez les classes sur les valeurs de l'axe des x en ajustant les limites des classes.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-q4 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q4()
-.HINT_q4()
 ```
 :::
 
@@ -244,20 +222,16 @@ ggplot(data =  malidd,
 ::: practice
 Tracez l'histogramme de `freqrespi` avec des limites allant de la valeur la plus basse de `freqrespi` à la plus élevée et des intervalles de 4.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-"ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
+
 ```
 
 Ensuite, ajustez l'échelle de l'axe des abscisses en ajoutant une fonction scale\_\*(). Configurez la plage valeurs de 24 à 60, avec des intervalles de 8.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-q5 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q5()
-.HINT_q5()
 ```
 :::
 

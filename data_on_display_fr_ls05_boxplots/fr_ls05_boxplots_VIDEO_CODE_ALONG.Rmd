@@ -127,26 +127,16 @@ ggplot(gapminder,
 ::: practice
 -   En utilisant le dataframe `gapminder`, créez une boîte à moustaches comparant la distribution du **PIB par habitant (`gdpPercap`)** entre les continents. Associez la **couleur de remplissage** des boîtes à `continent`, et réglez l'**épaisseur de ligne** à 1.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q1 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse en exécutant cette fonction de vérification (aucune entrée requise). La sortie vous indiquera si vous avez répondu correctement ou non.
-.CHECK_q1()
-
-# Vous pouvez demander un indice en exécutant cette fonction d'indice (aucune entrée requise).
-.HINT_q1()
 ```
 
 -   En vous basant sur le code de la question précédente, ajoutez une fonction `scale_*()` qui transforme l'axe des y en une échelle logarithmique.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q2 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q2()
-.HINT_q2()
 ```
 :::
 
@@ -207,13 +197,9 @@ Créez une boîte à moustaches montrant la distribution du PIB par habitant pou
 
 Maintenant, **réorganisez** les boîtes en fonction de la **moyenne** de `gdpPercap` et par ordre **décroissant**.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q3 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q3()
-.HINT_q3()
 ```
 
 En vous basant sur le code de la question précédente, ajoutez des **étiquettes** à votre graphique.
@@ -224,13 +210,9 @@ En vous basant sur le code de la question précédente, ajoutez des **étiquette
 
 -   Changez le **titre de l'axe des y** pour "Revenu par personne (USD)".
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q4 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q4()
-.HINT_q4()
 ```
 :::
 
@@ -288,24 +270,16 @@ ggplot(gapminder,
 ::: practice
 -   Créez une boîte à moustaches montrant la distribution du PIB par habitant pour chaque continent, comme vous l'avez fait dans l'exercice 2. Puis ajoutez une couche de points décalés.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q5 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q5()
-.HINT_q5()
 ```
 
 -   Ajustez votre réponse à la question précédente pour rendre les points 45% transparents et changez le "jitter" à 0.3mm.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-q6 <- "ÉCRIVEZ_VOTRE_CODE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse 
-.CHECK_q6()
-.HINT_q6()
 ```
 :::
 

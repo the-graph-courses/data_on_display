@@ -29,7 +29,6 @@ pacman::p_load(tidyverse,
 
 # Sourcer les fonctions de la leçon 
 source(here("global/functions/lesson_functions.R"))
-source(here("autograder/fr_ls02_scatter_autograder.R"))
 ```
 
 ## Objectifs d'apprentissage
@@ -85,16 +84,9 @@ Il est temps de vous entraîner à créer des graphiques !
 ::: practice
 En utilisant le dataframe `malidd`, créez un diagramme de dispersion montrant la relation entre l'âge et la taille (`height_cm`).
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_height <- "VOTRE_RÉPONSE_ICI"
-age_height
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_height()
-.HINT_age_height()
 ```
 :::
 
@@ -170,30 +162,16 @@ ggplot(data = malidd,
 
 • Utilisez le dataframe `malidd` pour créer un diagramme de dispersion montrant la relation entre l'âge et la charge virale, et mappez une troisième variable, la fréquence respiratoire (`freqrespi`) à la couleur :
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_height_respi <-  "VOTRE_RÉPONSE_ICI" 
-age_height_respi
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_height_respi()
-.HINT_age_height_respi()
 ```
 
 • Créez le même diagramme de dispersion âge vs taille, mais cette fois, mappez la variable binaire `fever` à la couleur des points. N'oubliez pas que `fever` doit être traité comme un facteur.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_height_fever <-  "VOTRE_RÉPONSE_ICI"
-age_height_fever
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_height_fever()
-.HINT_age_height_fever()
 ```
 :::
 
@@ -261,16 +239,9 @@ ggplot(data = malidd,
 ::: practice
 • Créez un nuage de points avec les mêmes variables que l'exemple précédent, mais changez la couleur des points à `cornflowerblue`, augmentez la taille des points à 3 mm et réglez l'opacité à 60%.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_viral_blue <-  "VOTRE_RÉPONSE_ICI"
-age_viral_blue
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_viral_blue()
-.HINT_age_viral_blue()
 ```
 :::
 
@@ -413,30 +384,16 @@ ggplot(data = malidd,
 ::: practice
 -   Créez un nuage de points avec les variables `age_months` et `height_cm`. Réglez la couleur des points sur "steelblue", la taille sur 2,5 mm, l'opacité sur 80 %. Ajoutez ensuite une ligne de tendance avec la méthode de lissage "lm" (modèle linéaire). Pour faire ressortir la ligne de tendance, réglez sa couleur sur "indianred3".
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_height_2 <-  "VOTRE_RÉPONSE_ICI"
-age_height_2
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_height_2()
-.HINT_age_height_2()
 ```
 
 -   Recréez le graphique que vous avez réalisé dans la question précédente, mais cette fois-ci, adaptez le code pour changer la forme des points en rectangles inclinés (numéro 23), et ajoutez la variable de température corporelle (`temp`) en **l'associant** à la couleur de remplissage des points.
 
-```{r message=TRUE, warning=TRUE, include= FALSE}
-# Créez votre graphique
-age_height_3 <-  "VOTRE_RÉPONSE_ICI"
-age_height_3
-```
+```{r}
+# Écrivez votre réponse ici
 
-```{r eval = FALSE, include = FALSE}
-# Vérifiez votre réponse :
-.CHECK_age_height_3()
-.HINT_age_height_3()
 ```
 :::
 
@@ -449,6 +406,72 @@ age_height_3
 3.  Changer la taille, la forme, la couleur, le remplissage et l'opacité des objets géométriques en définissant des **esthétiques fixes**.
 
 4.  Ajouter une **ligne de tendance** à un diagramme de dispersion avec **`geom_smooth()`**.
+
+# Solutions des exercices pratiques {.unnumbered}
+
+**Exercice 1**
+
+```{r}
+ggplot(data = malidd,
+       mapping = aes(x = age_months, 
+                     y = height_cm)) +
+geom_point()
+```
+
+**Exercice 2 - Partie 1**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+geom_point(mapping = aes(color = freqrespi))
+```
+
+**Exercice 2 - Partie 2**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = height_cm)) + 
+geom_point(mapping = aes(color = factor(fever)))
+```
+
+**Exercice 3**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = viral_load)) + 
+geom_point(color = "cornflowerblue",
+           size = 3,
+           alpha = 0.6)
+```
+
+**Exercice 4**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = height_cm)) + 
+geom_point(color = "steelblue",
+           size = 2.5,
+           alpha = 0.8) +
+geom_smooth(method = "lm", color = "indianred3")
+```
+
+**Exercice 5**
+
+```{r}
+ggplot(data = malidd, 
+       mapping = aes(x = age_months, 
+                     y = height_cm)) + 
+geom_point(color = "steelblue",
+           size = 2.5,
+           alpha = 0.8,
+           shape = 23,
+           mapping = aes(fill = temp)) +
+geom_smooth(method = "lm", color = "indianred3")
+```
 
 # Contributeurs {.unnumbered}
 

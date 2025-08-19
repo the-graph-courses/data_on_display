@@ -29,7 +29,6 @@ pacman::p_load(tidyverse,
 
 # Sourcer les fonctions de la leçon 
 source(here("global/functions/lesson_functions.R"))
-source(here("autograder/fr_ls01_gg_intro_autograder.R"))
 ```
 
 # Objectifs d'apprentissage
@@ -242,25 +241,9 @@ nigerm04
 ::: practice
 Utilisez le dataframe `nigerm04` pour générer le code `ggplot` qui représentera graphiquement la relation entre les cas `cases` (sur l'axe des ordonnées) et les semaines `week` (sur l'axe des abscisses) sous forme d'un nuage de points.
 
-```{r eval=F, include=F}
-# Lorsque vous pensez avoir la bonne réponse, soumettez-la en faisant ce qui suit : supprimez "VOTRE_RÉPONSE_ICI", remplacez-la par votre code et exécutez ces lignes.
+```{r}
+# Écrivez votre réponse ici
 
-nigerm04_scatter <- "VOTRE_RÉPONSE_ICI"
-
-# Assurez-vous que "nigerm04_scatter" apparaît dans votre onglet Environnement.
-```
-
-```{r eval=F, include=F}
-# Vérifiez votre réponse en exécutant cette fonction de vérification (aucune entrée requise). La sortie vous indiquera si vous avez répondu correctement ou non.
-
-.CHECK_nigerm04_scatter()
-
-# Vous pouvez demander un indice en exécutant cette fonction d'indice (aucune entrée requise).
-
-.HINT_nigerm04_scatter()
-
-# Obtenez la solution complète en tapant la fonction de solution :
-.SOLUTION_nigerm04_scatter()
 ```
 :::
 
@@ -331,15 +314,9 @@ C'est parce qu'un histogramme montre la répartition d'une seule variable numér
 ::: practice
 Utilisez le dataframe `nigerm04` pour créer un graphique à barres des cas hebdomadaires avec la fonction `geom_col()`. Mappez `cases` sur l'axe des y et `week` sur l'axe des x.
 
-```{r include = F}
-# Écrivez le code pour créer votre graphique
-nigerm04_bar <- "VOTRE_RÉPONSE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse:
-.CHECK_nigerm04_bar()
-
-# Demander un indice :
-.HINT_nigerm04_bar()
 ```
 :::
 
@@ -422,15 +399,9 @@ ggplot(data = nigerm96,
 ::: practice
 Utilisez le dataframe `nigerm04` pour créer un graphique linéaire des cas par semaine, coloré par `region`. Mappez `cases` sur l'axe des y, `week` sur l'axe des x, et `region` à la couleur. La fonction `geom_*` pour un graphique linéaire est **`geom_line()`**.
 
-```{r include=FALSE}
-# Écrivez le code pour créer votre graphique :
-nigerm04_line <- "VOTRE_RÉPONSE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse :
-.CHECK_nigerm04_line()
-
-# Demandez un indice :
-.HINT_nigerm04_line()
 ```
 :::
 
@@ -490,17 +461,11 @@ ggplot(data = nigerm96,
 Entraînez-vous à utiliser `fill` comme esthétique fixe dans un graphique à barres.
 
 ::: practice
-Utilisez le dataframe `nigerm04` pour créer un graphique à barres des cas hebdomadaires, et remplissez toutes les barres avec la même couleur. Mappez `cases` sur l'axe des y, `week` sur l'axe des x, et fixez l'esthétique `color` des barres à la couleur R "hotpink".
+Utilisez le dataframe `nigerm04` pour créer un graphique à barres des cas hebdomadaires, et remplissez toutes les barres avec la même couleur. Mappez `cases` sur l'axe des y, `week` sur l'axe des x, et fixez l'esthétique `fill` des barres à la couleur R "hotpink".
 
-```{r include=FALSE}
-# Écrivez le code pour créer votre graphique:
-nigerm04_pinkbar <- "VOTRE_RÉPONSE_ICI"
+```{r}
+# Écrivez votre réponse ici
 
-# Vérifiez votre réponse :
-.CHECK_nigerm04_pinkbar()
-
-# Demandez un indice :
-.HINT_nigerm04_pinkbar()
 ```
 :::
 
@@ -545,6 +510,45 @@ A la fin de ce cours, vous devriez être capable de :
 5.  Ajouter ou modifier les propriétés visuelles d'un graphique tels que la **couleur** ou la **taille**.
 
 6.  Distinguer entre les **esthétiques mappées** et les **esthétiques fixes** et savoir les utiliser.
+
+# Solutions des exercices pratiques {.unnumbered}
+
+**Exercice 1**
+
+```{r}
+ggplot(data = nigerm04,
+       mapping = aes(x = week, 
+                     y = cases)) +
+    geom_point()
+```
+
+**Exercice 2**
+
+```{r}
+ggplot(data = nigerm04, 
+       mapping = aes(x = week, 
+                     y = cases)) + 
+   geom_col()
+```
+
+**Exercice 3**
+
+```{r}
+ggplot(data = nigerm04,
+       mapping = aes(x = week,
+                     y = cases,
+                     color = region)) + 
+  geom_line()
+```
+
+**Exercice 4**
+
+```{r}
+ggplot(data = nigerm04, 
+       mapping = aes(x = week, 
+                     y = cases)) +
+geom_col(fill = "hotpink")
+```
 
 # Contributeurs {.unnumbered}
 
